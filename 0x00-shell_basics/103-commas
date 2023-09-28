@@ -1,0 +1,3 @@
+#!/bin/bash
+ls -A1 | LC_COLLATE=C sort --ignore-case --ignore-nonprinting | sed '/^\.$/d; /^\.\.$/d; s/$/,/; s/[^A-Za-z0-9_,\/]$//; s/$/\//'
+
