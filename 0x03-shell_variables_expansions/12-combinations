@@ -1,0 +1,3 @@
+#!/bin/bash
+echo {{a..z}{a..n},{a..z}{p..z}} | tr " " '\n' | sort
+
