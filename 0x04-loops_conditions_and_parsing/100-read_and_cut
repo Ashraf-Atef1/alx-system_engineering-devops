@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # Open the /etc/passwd file for reading
 
 while read -r line
