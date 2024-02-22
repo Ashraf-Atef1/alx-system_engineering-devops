@@ -2,7 +2,7 @@
 # print Best School 10 times
 
 i=0
-while ((i < 10))
+until ((i >= 10))
 do
 	echo Best School
 	((i++))
