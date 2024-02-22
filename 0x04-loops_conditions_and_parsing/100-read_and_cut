@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
 # Open the /etc/passwd file for reading
+
 while read -r line
 do
 	echo "$line" | cut -d ':' -f1,3,6
