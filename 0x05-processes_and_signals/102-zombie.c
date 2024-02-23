@@ -21,17 +21,23 @@ int infinite_while(void)
  */
 int main(void)
 {
-	int i;
+	pid_t pid;
+	char count = 0;
 
-	for (i = 0; i < 5; i++)
+	while (count < 5)
 	{
-		int pid = fork();
-
-		if (pid)
+		pid = fork();
+		if (pid > 0)
 		{
 			printf("Zombie process created, PID: %d\n", pid);
-			infinite_while();
+			sleep(1);
+			count++;
 		}
+		else
+			exit(0);
 	}
+
+	infinite_while();
+
 	return (0);
 }
