@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Stop "To infinity and beyond" indefinitely.
+
+pkill 4-to_infinity_and_beyond -f
