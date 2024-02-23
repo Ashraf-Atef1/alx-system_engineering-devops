@@ -34,7 +34,7 @@ int main(void)
 			count++;
 		}
 		else
-			exit(0);
+			return (0);
 	}
 
 	infinite_while();
