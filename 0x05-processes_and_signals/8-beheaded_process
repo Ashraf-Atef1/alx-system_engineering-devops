@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Stop "To infinity and beyond" indefinitely.
+
+pkill 7-highlander -f -SIGKILL
