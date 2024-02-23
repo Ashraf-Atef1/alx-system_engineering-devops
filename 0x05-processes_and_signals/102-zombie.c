@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
 /**
  * infinite_while - infinty loop
  * Return: 0
