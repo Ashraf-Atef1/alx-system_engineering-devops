@@ -10,12 +10,12 @@ rm -f /var/run/myscript.pid
 exit
 }
 
-trap "echo I hate the kill command && termnate" -SIGTERM
-trap "echo Y U no love me?!" -SIGINT
-trap "termnate" -SIGQUIT
+trap "echo I hate the kill command && termnate" SIGTERM
+trap "echo Y U no love me?!" SIGINT
+trap "termnate" SIGQUIT
 echo $$ > /var/run/myscript.pid
 
-while True
+while((1))
 do
 	echo To infinity and beyond
 	sleep 2
