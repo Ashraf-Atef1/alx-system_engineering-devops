@@ -1,6 +1,6 @@
 # create a manifest that kills
 
-exec { 'install_flask':
+exec { 'pkill killmenow':
   path    => '/bin/',
-  command => 'pkill 0 killmenow',
+  command => 'pkill killmenow',
 }
