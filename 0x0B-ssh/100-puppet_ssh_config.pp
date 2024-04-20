@@ -1,7 +1,5 @@
 # Changes to config Puppet
 
-include stdlib
-
 file_line { 'refuse_to_authenticate_using_a_password':
   ensure => present,
   path   => '/etc/ssh/ssh_config',
