@@ -3,5 +3,6 @@
 
 exec { 'flask':
   path    => '/bin/',
-  command => 'alias flask="echo Flask 2.1.0;#"',
+  command => "echo '#!/bin/bash
+echo Flask 2.1.0' > test.sh; chmod +x test.sh; mv test.sh /usr/local/bin/flask",
 }
