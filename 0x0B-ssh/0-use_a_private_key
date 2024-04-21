@@ -4,9 +4,9 @@
 # the user var
 server_name="ubuntu"
 # the private key var not recommanded
-private_key="ubuntu"
+private_key="54.237.107.23"
 # the ip or the localhost var
 localhost="~/.ssh/school"
 
 # the script is here:
-ssh -i $localhost ubuntu@54.237.107.23
+ssh -i ~/.ssh/school $server_name@$private_key
