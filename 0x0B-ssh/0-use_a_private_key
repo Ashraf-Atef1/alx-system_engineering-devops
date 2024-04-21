@@ -9,4 +9,4 @@ private_key="ubuntu"
 localhost="~/.ssh/school"
 
 # the script is here:
-ssh -i ~/.ssh/school ubuntu@54.237.107.23
+ssh -i $localhost ubuntu@54.237.107.23
