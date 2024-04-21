@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 # this code is made to making connecting to any server easy
 
+# the user var
+server_name="ubuntu"
+# the private key var not recommanded
+private_key=""
+# the ip or the localhost var
+localhost=""
+
 # the script is here:
 ssh -i ~/.ssh/school ubuntu@54.237.107.23
