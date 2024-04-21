@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# This script simplifies connecting to a server.
+# this code is made to making connecting to any server easy
 
-# Server details
+# the user var
 server_name="ubuntu"
+# the private key var not recommanded
 private_key="$HOME/.ssh/school"
+# the ip or the localhost var
 localhost="54.237.107.23"
 
-# Connect to the server
-eval ssh -i "$private_key" "$server_name@$localhost
-
+# the script is here:
+ssh -i "~/.ssh/school" "$server_name"@"$localhost"
