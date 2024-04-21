@@ -7,5 +7,5 @@ private_key="$HOME/.ssh/school"
 localhost="54.237.107.23"
 
 # Connect to the server
-ssh -i "$private_key" "$server_name@$localhost"
+eval 'ssh -i "$private_key" "$server_name@$localhost"'
 
