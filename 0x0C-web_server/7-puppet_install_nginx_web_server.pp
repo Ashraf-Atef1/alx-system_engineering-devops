@@ -15,7 +15,7 @@ file_line { 'default':
 file { '/var/www/html/error_404.html':
   content => 'Ceci n\'est pas une page',
 }
-file_line { '404 error':
+file_line { '404-error':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
