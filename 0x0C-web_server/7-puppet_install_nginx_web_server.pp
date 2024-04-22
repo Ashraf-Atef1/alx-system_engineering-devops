@@ -3,7 +3,7 @@
 package { 'nginx':
   ensure => installed,
 }
-file { '/var/www/html/index.html':
+file { 'aaaa':
   content => 'Hello World!',
 }
 file_line { '/etc/nginx/sites-available/default':
@@ -23,5 +23,5 @@ file_line { '/etc/nginx/sites-available/default':
 # }
 service {'nginx':
   ensure  => running,
-  require => ['nginx'],
+  require => Package['nginx'],
 }
