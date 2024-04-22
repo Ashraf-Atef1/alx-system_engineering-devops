@@ -21,7 +21,7 @@ file_line { 'default':
 #   after  => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
 #   line   => 'error_page 404 /error_404.html;\' /etc/nginx/sites-available/default',
 # }
-service {'nginx':
+service { 'nginx':
   ensure  => running,
   require => package['nginx'],
 }
