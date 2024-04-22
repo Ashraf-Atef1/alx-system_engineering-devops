@@ -1,27 +1,26 @@
 #!/usr/bin/pup
 
+# Setup New Ubuntu server with nginx
+
+exec { 'update system':
+        command => '/usr/bin/apt-get update',
+}
+
 package { 'nginx':
-  ensure => installed,
+	ensure => 'installed',
+	require => Exec['update system']
 }
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
+
+file {'/var/www/html/index.html':
+	content => 'Hello World!'
 }
-file_line { '/etc/nginx/sites-available/default':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'listen 80 default_server;',
-  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+
+exec {'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
 }
-file { '/var/www/html/error_404.html':
-  content => 'Ceci n\'est pas une page',
-}
-file_line { '/etc/nginx/sites-available/default':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
-  line   => 'error_page 404 /error_404.html;\' /etc/nginx/sites-available/default',
-}
+
 service {'nginx':
-  ensure  => running,
-  require => ['nginx'],
+	ensure => running,
+	require => Package['nginx']
 }
