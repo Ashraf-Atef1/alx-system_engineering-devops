@@ -1,0 +1,1 @@
+sudo ./0-transfer_file some_page.html 52.206.191.144 ubuntu ../0x0B-ssh/school
