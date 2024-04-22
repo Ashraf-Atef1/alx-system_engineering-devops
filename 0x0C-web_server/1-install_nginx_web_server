@@ -2,28 +2,5 @@
 # Bash script that configures a new Ubuntu machine to respect the requirements
 
 apt-get -y install nginx
-echo 'events {
-    # Configuration options here
-}
-
-http {
-    # Basic settings
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
-    sendfile      on;
-    keepalive_timeout  65;
-
-    # Server block
-    server {
-        listen       80;
-        server_name  your_domain.com; # Replace with your domain or IP address
-
-        location / {
-            default_type text/plain;
-            return 200 "Hello, world!";
-        }
-
-        # Additional configuration can be added here if needed
-    }
-}' > /etc/nginx/nginx.conf
+echo Hello World! > /usr/share/nginx/html/index.html
 nginx -s reload
