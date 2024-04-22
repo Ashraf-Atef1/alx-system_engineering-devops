@@ -2,5 +2,5 @@
 # Fix my server with these magic 2 lines
 cp /etc/passwd /tmp/
 echo OK > /tmp/isworking
-echo "ServerName localhost" >> /etc/apache2.conf
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
 service apache2 start
