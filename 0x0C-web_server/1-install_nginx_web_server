@@ -2,5 +2,5 @@
 # Bash script that configures a new Ubuntu machine to respect the requirements
 
 apt-get -y install nginx
-echo Hello World! > /usr/share/nginx/html/index.html
+echo Hello World! > /var/www/html/index.html
 nginx -s reload
