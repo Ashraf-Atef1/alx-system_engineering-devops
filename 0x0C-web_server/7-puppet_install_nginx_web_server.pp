@@ -1,5 +1,5 @@
 #!/usr/bin/pup
-
+# Install Nginx web server (w/ Puppet)
 package { 'nginx':
   ensure => installed,
 }
@@ -23,5 +23,5 @@ file_line { 'default':
 # }
 service { 'nginx':
   ensure  => running,
-  require => package['nginx'],
+  require => Package['nginx'],
 }
