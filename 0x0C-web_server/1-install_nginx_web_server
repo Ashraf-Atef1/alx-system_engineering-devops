@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Bash script that configures a new Ubuntu machine to respect the requirements
 
-sudo su
 apt-get -y install nginx
 echo 'events {
     # Configuration options here
