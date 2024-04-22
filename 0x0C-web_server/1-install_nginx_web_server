@@ -2,5 +2,6 @@
 # Bash script that configures a new Ubuntu machine to respect the requirements
 
 apt-get -y install nginx
+ufw allow 'Nginx HTTP'
 echo Hello World! > /var/www/html/index.html
 nginx -s reload
