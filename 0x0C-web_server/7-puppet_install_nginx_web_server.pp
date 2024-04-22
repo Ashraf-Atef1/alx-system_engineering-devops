@@ -19,7 +19,7 @@ file_line { 'error404':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
-  line   => 'error_page 404 /error_404.html;\' /etc/nginx/sites-available/default',
+  line   => 'error_page 404 /error_404.html;',
 }
 service { 'nginx':
   ensure  => running,
