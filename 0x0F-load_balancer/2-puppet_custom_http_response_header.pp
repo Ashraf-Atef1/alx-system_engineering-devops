@@ -22,12 +22,10 @@ file_line { 'error404':
   after  => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
   line   => 'error_page 404 /error_404.html;',
 }
-file_line { 'add-header_X-Served-By':
-  ensure      => 'present',
-  path        => '/etc/nginx/sites-available/default',
+exec { 'add_header':
+  provider    => shell,
   environment => ["HOST=${hostname}"],
-  after       => 'error_page 404 /error_404.html;',
-  line        => "add_header X-Served-By ${HOST};",
+  command     => 'sudo sed -i "26i\	add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default',
 }
 service { 'nginx':
   ensure  => running,
