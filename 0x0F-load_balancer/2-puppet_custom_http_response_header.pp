@@ -1,29 +1,27 @@
 #!/usr/bin/pup
 # Install Nginx web server (w/ Puppet)
-exec { 'update system':
-        command => '/usr/bin/apt-get update',
-}
 
 package { 'nginx':
-	ensure => 'installed',
-	require => Exec['update system']
+  ensure => installed,
+}
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+}
+file_line { 'default':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
 }
 
-file {'/var/www/html/index.html':
-	content => 'Hello World!'
+file_line { 'add-header_X-Served-By':
+  ensure      => 'present',
+  path        => '/etc/nginx/sites-available/default',
+  environment => ["HOST=${hostname}"],
+  after       => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+  line        => "add_header X-Served-By ${hostname};",
 }
-
-exec {'redirect_me':
-	command => 'sed -i "24i\	rewrite ^/redirect_me https://th3-gr00t.tk/ permanent;" /etc/nginx/sites-available/default',
-	provider => 'shell'
-}
-
-exec {'HTTP header':
-	command => 'sed -i "26i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
-	provider => 'shell'
-}
-
-service {'nginx':
-	ensure => running,
-	require => Package['nginx']
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
