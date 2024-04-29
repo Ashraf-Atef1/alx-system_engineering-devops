@@ -19,7 +19,7 @@ file_line { 'add-header_X-Served-By':
   path        => '/etc/nginx/sites-available/default',
   environment => ["HOST=${hostname}"],
   after       => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
-  line        => "add_header X-Served-By ${hostname};",
+  line        => "add_header X-Served-By ${HOST};",
 }
 service { 'nginx':
   ensure  => running,
