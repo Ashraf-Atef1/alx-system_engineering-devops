@@ -19,11 +19,6 @@ exec {'redirect_me':
 }
 
 exec {'HTTP header':
-	command => 'sed -i "25i\	error_page 404 /error_404.html;" /etc/nginx/sites-available/default',
-	provider => 'shell'
-}
-
-exec {'HTTP header':
 	command => 'sed -i "26i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
 	provider => 'shell'
 }
