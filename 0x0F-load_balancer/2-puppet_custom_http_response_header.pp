@@ -1,7 +1,6 @@
 #!/usr/bin/pup
 # Install Nginx web server (w/ Puppet)
 
-$hostname = $facts['hostname']
 package { 'nginx':
   ensure => installed,
 }
@@ -24,10 +23,11 @@ file_line { 'error404':
   line   => 'error_page 404 /error_404.html;',
 }
 file_line { 'add-header_X-Served-By':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'error_page 404 /error_404.html;',
-  line   => "add_header X-Served-By ${hostname};",
+  ensure      => 'present',
+  path        => '/etc/nginx/sites-available/default',
+  environment => ["HOST=${hostname}"],
+  after       => 'error_page 404 /error_404.html;',
+  line        => "add_header X-Served-By ${HOST};",
 }
 service { 'nginx':
   ensure  => running,
