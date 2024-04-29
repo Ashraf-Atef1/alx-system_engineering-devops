@@ -1,22 +1,34 @@
 #!/usr/bin/pup
 # Install Nginx web server (w/ Puppet)
+exec { 'update system':
+        command => '/usr/bin/apt-get update',
+}
+
 package { 'nginx':
-  ensure => installed,
+	ensure => 'installed',
+	require => Exec['update system']
 }
 
-exec { 'add_header':
-  provider    => shell,
-  environment => ["HOST=${hostname}"],
-  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOST\";/" /etc/nginx/nginx.conf',
-  before      => Exec['restart Nginx'],
+file {'/var/www/html/index.html':
+	content => 'Hello World!'
 }
 
-exec { 'restart Nginx':
-  provider => shell,
-  command  => 'sudo service nginx restart',
-
+exec {'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://th3-gr00t.tk/ permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
 }
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+
+exec {'HTTP header':
+	command => 'sed -i "25i\	error_page 404 /error_404.html;" /etc/nginx/sites-available/default',
+	provider => 'shell'
+}
+
+exec {'HTTP header':
+	command => 'sed -i "26i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+	provider => 'shell'
+}
+
+service {'nginx':
+	ensure => running,
+	require => Package['nginx']
 }
