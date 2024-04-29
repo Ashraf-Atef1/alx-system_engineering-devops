@@ -2,21 +2,27 @@
 # Bash script that install and configure HAproxy on your lb-01 server.
 
 configurations="\
-defaults
-	mode http
-	timeout connect 5000
-	timeout client 5000
-	timeout server 5000
-frontend load_balancer
-	bind 18.234.80.181:80
-	default_backend servers
-backend servers
-	server 531078-web-01 100.25.12.124
-	server 531078-web-02 54.236.45.187
+frontend haproxy_balancer
+    bind *:80
+    mode http
+    default_backend webservers
+    
+backend webservers
+    balance roundrobin
+    server 26071-web-01 44.210.150.159:80 check
+    server 26071-web-02 35.173.47.15:80 check
 "
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.0
+# Update packages
 apt-get -y update
-apt-get -y install haproxy=2.0.\*
+apt-get -y upgrade
+
+# Add HAProxy PPA
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.5
+apt-get -y update
+
+# Install HAProxy
+apt-get -y install haproxy
+cp -a /etc/haproxy/haproxy.cfg{,.orig}
 echo "$configurations" >> /etc/haproxy/haproxy.cfg
 service haproxy restart
