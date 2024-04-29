@@ -14,5 +14,5 @@ frontend load_balancer
 	default_backend servers
 backend servers
 	server 531078-web-01 100.25.12.124
-	server 531078-web-02 54.236.45.187" > /etc/haproxy/haproxy.cfg
+	server 531078-web-02 54.236.45.187" >> /etc/haproxy/haproxy.cfg
 service haproxy start
