@@ -26,7 +26,7 @@ def get_data(command):
     else:
         print(f"Error: Command '{shell_command}' failed with return code {result.returncode}")
 
-my_data = get_data("curl 0:8080 > file.txt 2&>1") or ""
+my_data = get_data("curl 0:80 -o ./file.txt") or ""
 ##############################################################
 import smtplib
 from email.mime.multipart import MIMEMultipart
