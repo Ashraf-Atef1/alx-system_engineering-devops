@@ -2,3 +2,4 @@
 # Bash script that configures and fix a server
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo service nginx restart
+sudo ./2-print.py
