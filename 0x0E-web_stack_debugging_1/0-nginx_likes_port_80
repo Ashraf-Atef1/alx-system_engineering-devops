@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Bash script that configures a server
 sed -i 's/8080 default_server/80 default_server/g' /etc/nginx/sites-enabled/default
-service nginx start
+service nginx restart
