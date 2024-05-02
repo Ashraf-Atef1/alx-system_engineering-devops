@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# A Bash script must accept 2 arguments
 get_record_info() {
     local domain="$1"
     local subdomain="$2"
