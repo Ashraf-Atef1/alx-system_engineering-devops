@@ -2,3 +2,4 @@
 # Bash script that configures and fix a server
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
+kill "$(cat /var/run/nginx.pid)"
