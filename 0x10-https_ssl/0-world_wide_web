@@ -17,4 +17,6 @@ get_record_info() {
     done
 }
 
+domain="$1"
+subdomain="$2"
 get_record_info "$domain" "$subdomain" "A"
