@@ -17,8 +17,4 @@ get_record_info() {
     done
 }
 
-domain="$1"
-subdomain="$2"
-if [ -n "$1" ]; then
-    get_record_info "$domain" "$subdomain" "A"
-fi
+get_record_info "$domain" "$subdomain" "A"
