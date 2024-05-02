@@ -19,5 +19,6 @@ get_record_info() {
 
 domain="$1"
 subdomain="$2"
-
-get_record_info "$domain" "$subdomain" "A"
+if [ -n "$1" ]; then
+    get_record_info "$domain" "$subdomain" "A"
+fi
