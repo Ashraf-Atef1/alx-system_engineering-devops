@@ -18,19 +18,7 @@ archive_name="$current_date.tar.gz"
 # MySQL dump command
 mysqldump --user=root --password="$1" --all-databases > "$dump_file"
 
-# Check if mysqldump was successful
-if [ $? -ne 0 ]; then
-    echo "MySQL dump failed. Exiting."
-    exit 1
-fi
-
 # Create a tar.gz archive
 tar -czf "$archive_name" "$dump_file"
-
-# Check if tar command was successful
-if [ $? -ne 0 ]; then
-    echo "Compression failed. Exiting."
-    exit 1
-fi
 
 echo $dump_file
