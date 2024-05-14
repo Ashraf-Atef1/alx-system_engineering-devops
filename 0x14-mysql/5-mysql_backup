@@ -33,4 +33,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "Backup completed successfully. Archive created: $archive_name"
+echo $dump_file
