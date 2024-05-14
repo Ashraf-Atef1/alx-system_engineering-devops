@@ -2,3 +2,6 @@
 # Display the user name
 sudo usermod --shell /bin/bash "$1"
 su -c whoami "$1"
+
+# I can also use this but is won't fix the problem of login
+# su "$1" -s /bin/bash -c whoami
