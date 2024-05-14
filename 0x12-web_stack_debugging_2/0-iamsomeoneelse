@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # Display the user name
-su $1 -s /bin/bash -c whoami
+sudo usermod --shell /bin/bash "$1"
+su -c whoami "$1"
