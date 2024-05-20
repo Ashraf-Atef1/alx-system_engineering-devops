@@ -4,6 +4,7 @@ from json import loads
 import requests
 from sys import argv
 
+
 if __name__ == "__main__":
     user = requests.get(
         f"https://jsonplaceholder.typicode.com/users/{argv[1]}")
