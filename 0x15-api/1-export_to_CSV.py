@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Python script that, using a REST API, for a given employee ID,
-returns information about his/her and export data in the CSV format."""
+"""Exports to-do list information for a given employee ID to CSV format."""
 from json import loads
 import requests
 from sys import argv
