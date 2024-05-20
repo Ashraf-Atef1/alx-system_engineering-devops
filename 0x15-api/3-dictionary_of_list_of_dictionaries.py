@@ -13,10 +13,13 @@ if __name__ == "__main__":
         f"https://jsonplaceholder.typicode.com/todos"
         ).json()
     with open("todo_all_employees.json", "w") as json_file:
+        all_data = {}
         for user in users:
-            user_tasks = [task for task in all_tasks if task['userId'] == user['id']]
-            dump({user['id']: [{
+            user_tasks = [task for task in all_tasks
+                          if task['userId'] == user['id']]
+            all_data[user['id']] = [{
                     "task": task['title'],
                     "completed": task['completed'],
                     "username": user['username']
-                } for task in user_tasks]}, json_file)
+                } for task in user_tasks]
+        dump(all_data, json_file)
