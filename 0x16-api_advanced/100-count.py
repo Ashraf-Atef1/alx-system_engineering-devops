@@ -28,7 +28,9 @@ def count_words(subreddit, word_list, after=None, counter={}):
                     .split().count(word.lower())
         if after:
             return count_words(subreddit, word_list, after, counter)
-        sorted(counter.items(), key=lambda x: x[1], reverse=True
-               ).map(lambda x: x[1] and print(f"{x[0]}: {x[1]}"))
+        for word in sorted(counter.items(), key=lambda x: x[1], reverse=True):
+            if word[1] != 0:
+                print(f"{word[0]}: {word[1]}")
     else:
+        print("None")
         return None
