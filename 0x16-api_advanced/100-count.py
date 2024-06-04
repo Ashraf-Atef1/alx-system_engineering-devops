@@ -32,5 +32,4 @@ def count_words(subreddit, word_list, after=None, counter={}):
             if word[1] != 0:
                 print(f"{word[0]}: {word[1]}")
     else:
-        print("None")
         return None
