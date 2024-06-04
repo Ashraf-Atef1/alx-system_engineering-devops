@@ -23,11 +23,12 @@ def count_words(subreddit, word_list, after=None, counter={}):
         for get_data in req.json().get("data").get("children"):
             dat = get_data.get("data")
             title = dat.get("title")
-            counter += count_words(title, word_list.split())
             for word in word_list:
-                counter[word.lower()] += title.lower().split().count(word.lower())
+                counter[word.lower()] += title.lower()\
+                    .split().count(word.lower())
         if after:
             return count_words(subreddit, word_list, after, counter)
-        print(counter)
+        sorted(counter.items(), key=lambda x: x[1], reverse=True
+               ).map(lambda x: x[1] and print(f"{x[0]}: {x[1]}"))
     else:
         return None
