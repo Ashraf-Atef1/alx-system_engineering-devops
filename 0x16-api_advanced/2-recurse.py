@@ -17,7 +17,7 @@ def recurse(subreddit, hot_list=[], after=None):
     )
 
     if req.status_code == 200:
-        after= req.json().get("data").get("after")
+        after = req.json().get("data").get("after")
         for get_data in req.json().get("data").get("children"):
             dat = get_data.get("data")
             title = dat.get("title")
