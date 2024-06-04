@@ -2,7 +2,6 @@
 """
 module to get the top ten hot posts for a given subreddit
 """
-
 import requests
 
 
@@ -17,6 +16,8 @@ def recurse(subreddit, hot_list=[], after=None):
     )
 
     if req.status_code != 200:
+        return hot_list
+    else:
         after = req.json().get("data").get("after")
         for get_data in req.json().get("data").get("children"):
             dat = get_data.get("data")
@@ -25,5 +26,3 @@ def recurse(subreddit, hot_list=[], after=None):
         if after:
             recurse(subreddit, hot_list, after)
         return hot_list
-    else:
-        print(None)
