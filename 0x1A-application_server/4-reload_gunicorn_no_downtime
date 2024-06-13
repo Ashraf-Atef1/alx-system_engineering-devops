@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Gracefully reloads Gunicorn.
-PID=$(pgrep -f 'gunicorn.*web_dynamic.2-hbnb:app')
+# reloads Gunicorn.
+PID=$(pgrep gunicorn)
 
-kill -HUP "$PID"
+# Reload Gunicorn gracefully
+kill -s HUP "$PID"
