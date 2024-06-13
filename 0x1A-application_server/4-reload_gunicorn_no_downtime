@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# reloads Gunicorn.
-PID=$(pgrep gunicorn | head -n 1)
+# Gracefully reloads Gunicorn.
 
-echo "$PID" > /tmp/master_pid
-echo "21531515" > /tmp/worker_pid
+pgrep gunicorn | awk '{ print $2 }' | xargs kill -HUP
