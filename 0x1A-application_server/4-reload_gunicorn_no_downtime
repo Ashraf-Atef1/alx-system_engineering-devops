@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
+PID=$(pgrep -f 'gunicorn.*web_dynamic.2-hbnb:app')
 
-ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+kill -HUP "$PID"
