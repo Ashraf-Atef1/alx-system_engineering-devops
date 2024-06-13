@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
-./2-print.py
-pgrep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+
+pkill -HUP gunicorn
